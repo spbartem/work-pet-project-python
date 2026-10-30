@@ -5,7 +5,7 @@ from app.database import get_connection
 
 router=APIRouter()
 
-@router.get("/flats")
+@router.get("/api/flats")
 def get_flats(
     house_id: int,
     query: str = ""

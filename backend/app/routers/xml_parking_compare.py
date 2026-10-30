@@ -13,13 +13,6 @@ router = APIRouter(prefix="/api", tags=["xml_parking_compare"])
 
 
 # ---------- утилиты ----------
-def _same_object(a: str, b: str) -> bool:
-    """right_number и change_record_number относятся к одному объекту?"""
-    if not a or not b:
-        return False
-    # сравниваем префикс до последнего '-', т.е. '78:31:0103301:1792-78/011'
-    return
-
 def _parse_dt(s):
     if not s:
         return None

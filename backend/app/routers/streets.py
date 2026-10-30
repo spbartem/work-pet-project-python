@@ -5,7 +5,7 @@ from app.database import get_connection
 
 router = APIRouter()
 
-@router.get("/streets")
+@router.get("/api/streets")
 def search_streets(query: str):
     query = query.strip()
 

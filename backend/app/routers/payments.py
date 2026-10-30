@@ -5,7 +5,7 @@ from app.database import get_connection
 
 router = APIRouter()
 
-@router.get("/payments")
+@router.get("/api/payments")
 def get_payments(flat_id: int):
     conn = get_connection()
 

@@ -1,0 +1,33 @@
+services:
+  backend:
+    build: ./backend
+    container_name: work-pet-project-python-backend
+    restart: always
+    environment:
+      DB_HOST: ${DB_HOST_PY}
+      DB_PORT: ${DB_PORT_PY}
+      DB_NAME: ${DB_NAME_PY}
+      DB_USER: ${DB_DEV_USER}
+      DB_PASSWORD: ${DB_DEV_PASSWORD}
+    expose:
+      - "8000"                # доступен только внутри docker-сети
+    networks:
+      - work-pet-project-python-net
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_PYTHON_API_URL: ${VITE_PYTHON_API_URL}
+    container_name: work-pet-project-python-frontend
+    restart: always
+    ports:
+      - "${FRONTEND_PORT:-8090}:80"   # снаружи 8090 → nginx внутри на 80
+    depends_on:
+      - backend
+    networks:
+      - work-pet-project-python-net
+
+networks:
+  work-pet-project-python-net:
+    driver: bridge

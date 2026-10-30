@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const backendUrl = import.meta.env.VITE_PYTHON_API_URL;
+
 function FlatList({ house, onSelect }) {
   const [flats, setFlats] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,7 +24,7 @@ function FlatList({ house, onSelect }) {
 
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/flats?house_id=${house.house_id}`
+          `${backendUrl}/api/flats?house_id=${house.house_id}`
         );
 
         if (!response.ok) {

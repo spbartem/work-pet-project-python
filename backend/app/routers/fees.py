@@ -5,7 +5,7 @@ from app.database import get_connection
 
 router = APIRouter()
 
-@router.get("/fees")
+@router.get("/api/fees")
 def get_fees(flat_id: int):
     conn = get_connection()
 

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const backendUrl = import.meta.env.VITE_PYTHON_API_URL;
+
 function AccountSearch({ onSelect }) {
   const [query, setQuery] = useState("");
   const [flat, setFlat] = useState(null);
@@ -16,7 +18,7 @@ function AccountSearch({ onSelect }) {
 
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/flats/search?account=${encodeURIComponent(
+          `${backendUrl}/api/flats/search?account=${encodeURIComponent(
             query
           )}`
         );

@@ -5,7 +5,7 @@ from app.database import get_connection
 
 router = APIRouter()
 
-@router.get("/discounts")
+@router.get("/api/discounts")
 def get_discount(flat_id: int):
     conn = get_connection()
 

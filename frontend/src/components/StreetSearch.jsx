@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const backendUrl = import.meta.env.VITE_PYTHON_API_URL;
+
 function StreetSearch({ onSelect }) {
     const [query, setQuery] = useState("");
     const [streets, setStreets] = useState([]);
@@ -16,7 +18,7 @@ function StreetSearch({ onSelect }) {
 
             try {
                 const response = await fetch(
-                    `http://127.0.0.1:8000/streets?query=${encodeURIComponent(query)}`
+                    `${backendUrl}/api/streets?query=${encodeURIComponent(query)}`
                 );
 
                 const data = await response.json();

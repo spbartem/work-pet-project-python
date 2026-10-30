@@ -5,7 +5,7 @@ from psycopg2.extras import RealDictCursor
 
 router = APIRouter()
 
-@router.get("/houses")
+@router.get("/api/houses")
 def search_houses(street_id: int, query: str):
     query = query.strip()
 

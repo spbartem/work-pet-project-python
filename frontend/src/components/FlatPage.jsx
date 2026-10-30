@@ -3,6 +3,8 @@ import PaymentsTable from "./functions/PaymentsTable.jsx";
 import FeesTable from "./functions/FeesTable.jsx";
 import DiscountInfo from "./functions/DiscountInfo.jsx";
 
+const backendUrl = import.meta.env.VITE_PYTHON_API_URL;
+
 function FlatPage({ flat, onBack, onSelectAccount }) {
   const [activeTab, setActiveTab] = useState("info");
 
@@ -38,7 +40,7 @@ function FlatPage({ flat, onBack, onSelectAccount }) {
 
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/flats/${flat.flat_id}`
+          `${backendUrl}/api/flats/${flat.flat_id}`
         );
 
         if (!response.ok) {
@@ -91,19 +93,19 @@ function FlatPage({ flat, onBack, onSelectAccount }) {
       let url = "";
 
       if (activeTab === "fees") {
-        url = `http://127.0.0.1:8000/fees?flat_id=${flat.flat_id}`;
+        url = `${backendUrl}/api/fees?flat_id=${flat.flat_id}`;
       }
 
       if (activeTab === "payments") {
-        url = `http://127.0.0.1:8000/payments?flat_id=${flat.flat_id}`;
+        url = `${backendUrl}/api/payments?flat_id=${flat.flat_id}`;
       }
 
       if (activeTab === "claims") {
-        url = `http://127.0.0.1:8000/claims?flat_id=${flat.flat_id}`;
+        url = `${backendUrl}/api/claims?flat_id=${flat.flat_id}`;
       }
 
       if (activeTab === "discounts") {
-        url = `http://127.0.0.1:8000/discounts?flat_id=${flat.flat_id}`;
+        url = `${backendUrl}/api/discounts?flat_id=${flat.flat_id}`;
       }
 
       try {
