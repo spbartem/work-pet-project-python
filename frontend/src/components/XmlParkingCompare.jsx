@@ -1,7 +1,5 @@
 import { useMemo, useState } from "react";
 
-const backendUrl = import.meta.env.VITE_PYTHON_API_URL;
-
 function pad2(n) {
   return String(n).padStart(2, "0");
 }
@@ -96,7 +94,7 @@ export default function ComparePage({ onBack }) {
     try {
       const fd = new FormData();
       fd.append("file", file);
-      const res = await fetch(`${backendUrl}/api/compare`, {
+      const res = await fetch("/api/compare", {
         method: "POST",
         body: fd,
       });
